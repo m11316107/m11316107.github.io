@@ -50,6 +50,29 @@
       let isReady = false;
       let smoothedAngle = [0, 0], lastTickAngle = [0, 0], smoothedPos = [{x:0, y:0}, {x:0, y:0}];
       let mainColor, colors = ['#00ffff', '#ff00ff', '#ffff00'], colorIdx = 0;
+      const LANDMARK_COLORS = [
+        '#ffffff', // 0 wrist
+        '#ff4444', // 1 thumb_cmc
+        '#ff7722', // 2 thumb_mcp
+        '#ffaa00', // 3 thumb_ip
+        '#ffdd00', // 4 thumb_tip
+        '#aaff00', // 5 index_mcp
+        '#44ff44', // 6 index_pip
+        '#00ffaa', // 7 index_dip
+        '#00ffff', // 8 index_tip
+        '#00aaff', // 9 middle_mcp
+        '#0066ff', // 10 middle_pip
+        '#4444ff', // 11 middle_dip
+        '#8800ff', // 12 middle_tip
+        '#cc00ff', // 13 ring_mcp
+        '#ff00cc', // 14 ring_pip
+        '#ff0088', // 15 ring_dip
+        '#ff0044', // 16 ring_tip
+        '#ff6699', // 17 pinky_mcp
+        '#ffaacc', // 18 pinky_pip
+        '#ffccee', // 19 pinky_dip
+        '#ffffff', // 20 pinky_tip
+      ];
       let glitchTimer = 0, osc, envelope, linkOsc;
       let modelCheckTimer = 0;
 
@@ -228,12 +251,35 @@
       }
 
       function drawFingertips(hand, gx, gy) {
-        [4, 8, 12, 16, 20].forEach(idx => {
+        for (let idx = 0; idx < 21; idx++) {
           let k = hand.keypoints[idx];
-          let x = map(k.x, 0, 640, 0, width) + gx, y = map(k.y, 0, 480, 0, height) + gy;
-          noFill(); stroke(255, 180); circle(x, y, 12);
-          fill(255, 150); textSize(9); text(`ID:${idx}`, x+15, y-10);
-        });
+          let x = map(k.x, 0, 640, 0, width) + gx;
+          let y = map(k.y, 0, 480, 0, height) + gy;
+          let c = color(LANDMARK_COLORS[idx]);
+
+          // 外圈光暈
+          noFill();
+          stroke(red(c), green(c), blue(c), 60);
+          strokeWeight(6);
+          circle(x, y, 32);
+
+          // 中圈
+          stroke(red(c), green(c), blue(c), 160);
+          strokeWeight(2);
+          circle(x, y, 20);
+
+          // 實心核心
+          noStroke();
+          fill(red(c), green(c), blue(c), 220);
+          circle(x, y, 10);
+
+          // 標籤
+          strokeWeight(1);
+          fill(red(c), green(c), blue(c));
+          textSize(9);
+          text(`${idx}`, x + 14, y - 8);
+        }
+        strokeWeight(1); // reset
       }
 
       function drawVirtualButtons(gx, gy) {
