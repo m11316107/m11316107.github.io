@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西濱上的期末考：一日北高 360</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                        },
+                        accent: {
+                            cyan: '#22d3ee',
+                            blue: '#3b82f6',
+                            purple: '#8b5cf6',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Outfit', 'Noto Sans TC', 'sans-serif'],
+                        body: ['Noto Sans TC', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #22d3ee, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent),
+                        radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.1), transparent);
+        }
+        .media-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(34, 211, 238, 0.3), transparent);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-accent-cyan selection:text-slate-950">
+
+    <!-- Sticky Progress Bar -->
+    <div class="fixed top-0 left-0 w-full h-1 bg-slate-900 z-50">
+        <div id="progress" class="h-full bg-gradient-to-right from-accent-cyan to-accent-purple w-0 transition-all duration-150"></div>
+    </div>
+
+    <!-- Navigation (Visual only) -->
+    <nav class="fixed top-0 w-full z-40 px-6 py-4 flex justify-between items-center bg-slate-950/50 backdrop-blur-md border-b border-white/5">
+        <div class="font-display font-extrabold text-xl tracking-tighter">
+            NORTH <span class="text-accent-cyan">TO</span> SOUTH
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400 tracking-widest uppercase">
+            <span class="hover:text-accent-cyan transition-colors cursor-pointer">挑戰計畫</span>
+            <span class="hover:text-accent-cyan transition-colors cursor-pointer">路徑攻略</span>
+            <span class="hover:text-accent-cyan transition-colors cursor-pointer">騎士精神</span>
+        </div>
+    </nav>
+
+    <main class="relative hero-gradient pt-24 pb-32">
+        <!-- Hero Section -->
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-accent-cyan/10 border border-accent-cyan/20 text-accent-cyan text-xs font-bold uppercase tracking-widest animate-pulse">
+                    Cycling Challenge 360KM
+                </div>
+                <h1 class="font-display text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight">
+                    西濱上的 <br/>
+                    <span class="text-gradient">期末考</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-400 leading-relaxed max-w-xl">
+                    一日北高 360，你準備好被風載著走了嗎？這是一場關於移動的集體儀式，也是島嶼邊界的極限感知。
+                </p>
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-display font-bold text-white">360KM</span>
+                        <span class="text-xs text-slate-500 uppercase tracking-widest">Total Distance</span>
+                    </div>
+                    <div class="w-px h-12 bg-white/10 hidden sm:block"></div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-display font-bold text-white">24H</span>
+                        <span class="text-xs text-slate-500 uppercase tracking-widest">Time Limit</span>
+                    </div>
+                    <div class="w-px h-12 bg-white/10 hidden sm:block"></div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-display font-bold text-white">100%</span>
+                        <span class="text-xs text-slate-500 uppercase tracking-widest">Willpower</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 relative group">
+                <div class="absolute inset-0 bg-accent-blue/20 blur-[80px] group-hover:bg-accent-purple/20 transition-all duration-700"></div>
+                <div class="relative media-container overflow-hidden animate-float">
+                    <img src='https://opal.google/board/blobs/ad28cba3-105e-4bfb-8ea7-5a05adc51664' alt='西濱長征' class="transform group-hover:scale-105 transition-transform duration-700" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <div class="max-w-4xl mx-auto px-6">
+            
+            <!-- Intro Card -->
+            <div class="glass-card p-8 md:p-12 mb-16 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5,5.5L11,9.48V7H2V17H11V14.52L15.5,18.5V5.5M17,7V17H22V7H17Z"/></svg>
+                </div>
+                <p class="text-xl md:text-2xl font-light leading-relaxed text-slate-200">
+                    在台灣單車界的語境裡，「360」這組數字並非幾何學上的圓滿，而是一場略帶自虐色彩的公路修辭。從新北八里的廖添丁廟出發，這段全長約 360 公里的西濱長征，與其說是一場單車活動，不如說是一場關於<span class="text-accent-cyan font-semibold">「移動」</span>的集體儀式。
+                </p>
+            </div>
+
+            <div class="space-y-24">
+                
+                <!-- Section 1 -->
+                <section class="relative">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-sm font-display font-bold text-accent-cyan">01</span>
+                        <div class="h-px flex-grow bg-white/5"></div>
+                    </div>
+                    <h2 class="text-3xl font-display font-bold mb-8">序幕：什麼是「北高 360」？——當浪漫遇上 24 小時時速</h2>
+                    <div class="prose prose-invert prose-lg max-w-none text-slate-400 space-y-6">
+                        <p>
+                            這不是那種帶著野餐籃、在河濱公園優雅徐行的單車慢活。北高 360（或稱一日北高）是一場現實版的「生死時速」，參與者必須在限時 24 小時內橫跨半個台灣。
+                        </p>
+                        <p>
+                            對外行人來說，這聽起來像是一種行為藝術般的自我折磨；但對騎士而言，這是一場「成就練習」。這場挑戰不設獎金，沒有排名的肅殺，唯有一張完成認證的證書與獎牌。這種「非競賽性質」的自我挑戰，反而賦予了活動一種純粹的浪漫：你不需要贏過誰，你只需要在倒數計時結束前，對得起那一整年的練習與汗水。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 2: Grid Layout -->
+                <section class="relative">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-sm font-display font-bold text-accent-blue">02</span>
+                        <div class="h-px flex-grow bg-white/5"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                        <div>
+                            <h2 class="text-3xl font-display font-bold mb-8 text-white">朝聖之路始末：從「狂熱分子」到「全民運動」</h2>
+                            <div class="prose prose-invert prose-lg max-w-none text-slate-400">
+                                <p>這場壯遊的起源，最早能追溯到那些追求極限體能、甚至帶點宗教狂熱色彩的「瘋系列」騎士（Brevets）。在那個長距離單車尚未普及的年代，這是一群單車信徒的地下聚會。</p>
+                            </div>
+                        </div>
+                        <div class="glass-card p-8 border-accent-blue/20 bg-accent-blue/5">
+                            <p class="text-slate-300 italic border-l-2 border-accent-blue pl-6 leading-relaxed">
+                                真正的轉捩點出現在 2016 年。台北市長柯文哲以「地表最強阿伯」之姿，打破了長距離單車「唯有神人能及」的框架。那一夜，無數人守在螢幕前，看著一個中年男子在黑夜與寒風中不斷踩踏。
+                            </p>
+                        </div>
+                    </div>
+                    <p class="mt-8 text-slate-400 text-lg">
+                        從此，每年 10 月至 12 月，西濱公路上便會出現宛如候鳥遷徙般的壯觀景象，吸引數千人一同出動。
+                    </p>
+                </section>
+
+                <!-- Section 3: High Impact -->
+                <section class="relative py-12 px-8 rounded-[40px] bg-gradient-to-br from-slate-900 to-slate-950 border border-white/5 shadow-2xl">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-sm font-display font-bold text-accent-purple">03</span>
+                    </div>
+                    <h2 class="text-4xl font-display font-extrabold mb-8 italic">騎士們的潛規則：<span class="text-accent-cyan">風</span>，才是真正的老大</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2 space-y-6 text-slate-300 text-lg">
+                            <p>在哲學思維中，我們常強調「人的主體性」，但在北高 360 的賽道上，主體性必須讓位給自然。具體來說，是讓位給「東北季風」。</p>
+                            <p>資深騎士都知道，挑戰北高的成功方程式裡，體能佔一半，運氣佔一半。而運氣的代名詞就是「順風」。主流觀點認為，北高 360 是一場「季節限定」的挑戰，強大的東北季風會化身為上帝的手掌，從背後推著你前進。</p>
+                        </div>
+                        <div class="bg-white/5 p-6 rounded-2xl flex flex-col justify-center items-center text-center space-y-4 border border-white/10">
+                            <div class="w-16 h-16 rounded-full bg-accent-purple/20 flex items-center justify-center text-accent-purple">
+                                <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <p class="text-sm font-medium text-slate-400">有風的時候，你以為自己是環法車手；沒風或逆風的時候，你會開始懷疑人生。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4 & 5: Bento Style -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                    <!-- Column 4 -->
+                    <div class="md:col-span-7 glass-card p-10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="text-sm font-display font-bold text-red-400">04</span>
+                                <h2 class="text-2xl font-bold">公路上的社會觀察</h2>
+                            </div>
+                            <div class="text-slate-400 space-y-4">
+                                <p>當英雄主義遇上公民素養。最令人遺憾的景象，莫過於部分騎士為了趕路，在路口玩起「紅燈馬拉松」。</p>
+                                <p>更有甚者，是所謂的「土匪騎士」——未報名繳費、卻在大集團避風與蹭取物資。這種缺乏契約精神的行為，往往成為賽事管理上的隱憂與爭議。</p>
+                            </div>
+                        </div>
+                        <div class="mt-12 pt-6 border-t border-white/5 flex items-center justify-between text-xs uppercase tracking-tighter text-slate-500 font-bold">
+                            <span>Ethics & Safety</span>
+                            <span class="text-red-400/50">Critical Warning</span>
+                        </div>
+                    </div>
+
+                    <!-- Column 5 -->
+                    <div class="md:col-span-5 bg-gradient-to-br from-accent-cyan/10 to-accent-blue/10 rounded-[24px] p-10 border border-accent-cyan/20">
+                        <div class="flex items-center gap-4 mb-6">
+                            <span class="text-sm font-display font-bold text-accent-cyan">05</span>
+                            <h2 class="text-2xl font-bold">畫餅未來</h2>
+                        </div>
+                        <div class="text-slate-300 space-y-6">
+                            <p class="text-sm leading-relaxed">
+                                未來的北高 360，或許會變得更有趣，也更趨向規範。
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan mt-1.5"></span>
+                                    <span class="text-sm">E-bike 電輔車技術進步，瓦解體力門檻。</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-accent-cyan mt-1.5"></span>
+                                    <span class="text-sm">智慧導航與數位晶片監控提升安全性。</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conclusion -->
+                <section class="pt-16 pb-12 text-center max-w-2xl mx-auto">
+                    <div class="section-divider mb-16"></div>
+                    <h3 class="text-accent-cyan font-display font-bold text-xl mb-4 tracking-widest uppercase">Conclusion</h3>
+                    <p class="text-2xl md:text-3xl font-bold mb-8 leading-snug">
+                        這不僅是為了那張證書，更是為了在那 24 小時裡，體驗一種純粹、專注且不被外界打擾的<span class="text-accent-purple">「存在感」</span>。
+                    </p>
+                    <p class="text-slate-400 mb-12 italic">
+                        北高 360，本質上是一場與自己的對話。當你在黑夜的西濱公路上，聽著輪胎與地面摩擦的規律聲響，看著遠方紅尾燈排成的點點星火，體力的枯竭與意志的昇華往往會同時降臨。
+                    </p>
+                    <button class="px-10 py-4 bg-gradient-to-r from-accent-cyan to-accent-blue rounded-full font-bold text-slate-950 hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] transition-all transform hover:scale-105 active:scale-95">
+                        明年，你準備好被風載著走了嗎？
+                    </button>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Progress bar interaction
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress").style.width = scrolled + "%";
+        };
+
+        // Reveal on scroll animation (simple version)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
